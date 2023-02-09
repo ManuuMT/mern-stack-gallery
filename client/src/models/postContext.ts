@@ -1,7 +1,11 @@
 export type Post = {
+  _id: string;
   title: string;
   description: string;
-  image?: string;
+  image?: {
+    public_id: string;
+    url: string;
+  };
 };
 
 export type PostProviderType = {
