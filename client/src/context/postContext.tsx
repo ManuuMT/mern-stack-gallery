@@ -1,5 +1,12 @@
-import { createContext, ReactNode, useContext, useState } from "react";
+import {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { Post, PostProviderType } from "../models";
+import { getPostsRequests } from "../services";
 
 const context = createContext({});
 
@@ -11,6 +18,16 @@ interface Props {
 
 export const PostProvider = ({ children }: Props) => {
   const [posts, setPosts] = useState<Post[]>([]);
+  const getPosts = async () => {
+    const res = await getPostsRequests();
+    setPosts(res.data);
+  };
+
+  // * Life Cycle
+  useEffect(() => {
+    getPosts();
+  });
+
   return (
     <context.Provider value={{ posts, setPosts }}>{children}</context.Provider>
   );
