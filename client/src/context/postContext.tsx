@@ -18,15 +18,14 @@ interface Props {
 
 export const PostProvider = ({ children }: Props) => {
   const [posts, setPosts] = useState<Post[]>([]);
-  const getPosts = async () => {
-    const res = await getPostsRequests();
-    setPosts(res.data);
-  };
 
   // * Life Cycle
   useEffect(() => {
-    getPosts();
-  });
+    (async () => {
+      const res = await getPostsRequests();
+      setPosts(res.data);
+    })();
+  }, []);
 
   return (
     <context.Provider value={{ posts, setPosts }}>{children}</context.Provider>

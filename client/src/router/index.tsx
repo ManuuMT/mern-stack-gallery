@@ -12,4 +12,9 @@ export const router = createBrowserRouter([
     element: <PostForm />,
     errorElement: <NotFoundPage />,
   },
+  {
+    path: "/:id",
+    element: <PostForm />,
+    errorElement: <NotFoundPage />,
+  },
 ]);
