@@ -18,7 +18,7 @@ const PostCard: React.FC<PostCardProps> = (props) => {
       (t) => (
         <div>
           <p className="text-white">
-            Do you want to delete <strong>{id}</strong>?
+            Do you want to delete <strong>{props.post.title}</strong>?
           </p>
           <div>
             <button

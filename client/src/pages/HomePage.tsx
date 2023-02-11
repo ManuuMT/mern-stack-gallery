@@ -18,7 +18,7 @@ const HomePage: React.FC = () => {
       );
 
     return (
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mx-4">
         {posts.map((post) => (
           <PostCard key={post._id} post={post} />
         ))}
@@ -28,7 +28,7 @@ const HomePage: React.FC = () => {
 
   return (
     <main>
-      <header className="flex justify-between items-center my-4">
+      <header className="flex justify-between items-center m-4 ">
         <h1 className="text-2xl text-gray-300 font-bold">
           Posts ({posts.length})
         </h1>
