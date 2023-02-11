@@ -4,7 +4,10 @@ import PostCard from "../components/PostCard";
 import { VscEmptyWindow } from "react-icons/vsc";
 
 const HomePage: React.FC = () => {
+  // * States
   const { posts } = usePosts();
+
+  // * Methods
   const renderPost = () => {
     if (posts.length === 0)
       return (

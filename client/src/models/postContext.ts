@@ -1,5 +1,5 @@
 export type Post = {
-  _id: string;
+  _id?: string;
   title: string;
   description: string;
   image?: {
@@ -10,5 +10,7 @@ export type Post = {
 
 export type PostProviderType = {
   posts: Post[];
-  setPosts: (value: Post[]) => void;
+  setPosts: (value: Post[]) => Promise<void>;
+  createPost: (post: Post) => Promise<void>;
+  deletePost: (id: string) => Promise<void>;
 };
