@@ -8,12 +8,12 @@ export const router = createBrowserRouter([
     errorElement: <NotFoundPage />,
   },
   {
-    path: "/form",
+    path: "/posts/new",
     element: <PostForm />,
     errorElement: <NotFoundPage />,
   },
   {
-    path: "/:id",
+    path: "/posts/:id",
     element: <PostForm />,
     errorElement: <NotFoundPage />,
   },

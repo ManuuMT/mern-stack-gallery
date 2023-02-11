@@ -23,7 +23,7 @@ const PostCard: React.FC<PostCardProps> = (props) => {
           <div>
             <button
               className="bg-red-500 hover:bg-red-400 px-3 py-2 text-sm text-white rounded-sm mx-2"
-              onClick={(e) => {
+              onClick={() => {
                 deletePost(id);
                 toast.dismiss(t.id);
               }}
@@ -51,7 +51,7 @@ const PostCard: React.FC<PostCardProps> = (props) => {
   return (
     <div
       className="bg-zinc-800 text-white rounded-md shadow-md shadow-black hover:bg-zinc-700 hover:cursor-pointer"
-      onClick={() => navigate(`/${props.post._id}`)}
+      onClick={() => navigate(`/posts/${props.post._id}`)}
     >
       <div className="px-4 py-7">
         <div className="flex justify-between items-center">

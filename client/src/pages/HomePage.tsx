@@ -33,7 +33,7 @@ const HomePage: React.FC = () => {
           Posts ({posts.length})
         </h1>
         <Link
-          to="/new"
+          to="/posts/new"
           className="bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-500"
         >
           Create Post

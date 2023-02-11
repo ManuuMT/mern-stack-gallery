@@ -10,6 +10,7 @@ import {
   createPostRequest,
   getPostsRequest,
   deletePostRequest,
+  getSinglePostsRequest,
 } from "../services";
 
 interface Props {
@@ -36,6 +37,11 @@ export const PostProvider = ({ children }: Props) => {
     }
   };
 
+  const getSinglePost = async (id: string) => {
+    const res = await getSinglePostsRequest(id);
+    return res.data;
+  };
+
   // * Life Cycle
   useEffect(() => {
     (async () => {
@@ -45,7 +51,9 @@ export const PostProvider = ({ children }: Props) => {
   }, []);
 
   return (
-    <context.Provider value={{ posts, setPosts, createPost, deletePost }}>
+    <context.Provider
+      value={{ posts, setPosts, createPost, deletePost, getSinglePost }}
+    >
       {children}
     </context.Provider>
   );

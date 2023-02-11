@@ -9,3 +9,6 @@ export const deletePostRequest = async (id: string) =>
 
 export const createPostRequest = async (post: Post) =>
   await axios.post("http://localhost:4000/posts", post);
+
+export const getSinglePostsRequest = async (id: string) =>
+  await axios.get(`http://localhost:4000/posts/${id}`);
