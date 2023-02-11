@@ -7,7 +7,7 @@ import { Post } from "../models";
 import { VscArrowLeft } from "react-icons/vsc";
 
 const PostForm: React.FC = () => {
-  const { createPost, getSinglePost } = usePosts();
+  const { createPost, getSinglePost, updatePost } = usePosts();
   const navigate = useNavigate();
   const params = useParams();
   const [post, setPost] = useState<Post>();
@@ -43,7 +43,9 @@ const PostForm: React.FC = () => {
             })}
             initialValues={post || { title: "", description: "" }}
             onSubmit={async (values: Post) => {
-              await createPost(values);
+              if (params.id) {
+                await updatePost(params.id, values);
+              } else await createPost(values);
               navigate("/");
             }}
           >

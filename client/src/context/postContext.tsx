@@ -11,6 +11,7 @@ import {
   getPostsRequest,
   deletePostRequest,
   getSinglePostsRequest,
+  updatePostRequest,
 } from "../services";
 
 interface Props {
@@ -42,6 +43,14 @@ export const PostProvider = ({ children }: Props) => {
     return res.data;
   };
 
+  const updatePost = async (id: string, values: Partial<Post>) => {
+    const res = await updatePostRequest(id, values);
+    console.log(res);
+    if (res.data) {
+      setPosts(posts.map((post) => (post._id === id ? res.data : post)));
+    }
+  };
+
   // * Life Cycle
   useEffect(() => {
     (async () => {
@@ -52,7 +61,14 @@ export const PostProvider = ({ children }: Props) => {
 
   return (
     <context.Provider
-      value={{ posts, setPosts, createPost, deletePost, getSinglePost }}
+      value={{
+        posts,
+        setPosts,
+        createPost,
+        deletePost,
+        getSinglePost,
+        updatePost,
+      }}
     >
       {children}
     </context.Provider>

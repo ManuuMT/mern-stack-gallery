@@ -12,3 +12,6 @@ export const createPostRequest = async (post: Post) =>
 
 export const getSinglePostsRequest = async (id: string) =>
   await axios.get(`http://localhost:4000/posts/${id}`);
+
+export const updatePostRequest = async (id: string, values: Partial<Post>) =>
+  await axios.put(`http://localhost:4000/posts/${id}`, values);

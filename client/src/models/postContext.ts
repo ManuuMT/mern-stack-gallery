@@ -14,4 +14,5 @@ export type PostProviderType = {
   createPost: (post: Post) => Promise<void>;
   deletePost: (id: string) => Promise<void>;
   getSinglePost: (id: string) => Promise<Post>;
+  updatePost: (id: string, values: Partial<Post>) => Promise<void>;
 };
