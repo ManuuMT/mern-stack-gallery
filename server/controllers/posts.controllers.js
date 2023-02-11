@@ -14,8 +14,9 @@ export const getPosts = async (req, res) => {
 export const createPost = async (req, res) => {
   try {
     const { title, description } = req.body;
+
     let image;
-    if (req.files.image) {
+    if (req.files?.image) {
       const result = await uploadImage(req.files.image.tempFilePath);
       await fs.remove(req.files.image.tempFilePath);
       image = {
@@ -23,7 +24,6 @@ export const createPost = async (req, res) => {
         public_id: result.public_id,
       };
     }
-
     const newPost = new Post({ title, description, image });
     await newPost.save();
     return res.json(newPost);
