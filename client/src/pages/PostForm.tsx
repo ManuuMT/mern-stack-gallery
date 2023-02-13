@@ -5,6 +5,7 @@ import * as Yup from "yup";
 import { usePosts } from "../context/postContext";
 import { Post } from "../models";
 import { VscArrowLeft } from "react-icons/vsc";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 const PostForm: React.FC = () => {
   const { createPost, getSinglePost, updatePost } = usePosts();
@@ -42,14 +43,15 @@ const PostForm: React.FC = () => {
               description: Yup.string().required("Description  is required"),
             })}
             initialValues={post || { title: "", description: "" }}
-            onSubmit={async (values: Post) => {
+            onSubmit={async (values: Post, actions) => {
               if (params.id) {
                 await updatePost(params.id, values);
               } else await createPost(values);
+              actions.setSubmitting(false);
               navigate("/");
             }}
           >
-            {({ handleSubmit, setFieldValue }) => (
+            {({ handleSubmit, setFieldValue, isSubmitting }) => (
               <Form onSubmit={handleSubmit} className="flex flex-col">
                 <label
                   htmlFor="title"
@@ -100,8 +102,13 @@ const PostForm: React.FC = () => {
                 <button
                   type="submit"
                   className="bg-indigo-600 hover:bg-indigo-500 px-4 py-2 rounded mt-2 focus: outline-none disabled:bg-indigo-400"
+                  disabled={isSubmitting}
                 >
-                  Save
+                  {isSubmitting ? (
+                    <AiOutlineLoading3Quarters className="animate-spin h-5 w-5" />
+                  ) : (
+                    "Save"
+                  )}
                 </button>
               </Form>
             )}
