@@ -34,7 +34,7 @@ const HomePage: React.FC = () => {
         </h1>
         <Link
           to="/posts/new"
-          className="bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-500"
+          className="bg-indigo-600 rounded px-4 py-2 text-white hover:bg-indigo-500"
         >
           Create Post
         </Link>

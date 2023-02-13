@@ -49,7 +49,7 @@ const PostForm: React.FC = () => {
               navigate("/");
             }}
           >
-            {({ handleSubmit }) => (
+            {({ handleSubmit, setFieldValue }) => (
               <Form onSubmit={handleSubmit} className="flex flex-col">
                 <label
                   htmlFor="title"
@@ -84,6 +84,18 @@ const PostForm: React.FC = () => {
                   component="p"
                   className="text-red-400 text-sm"
                   name="description"
+                />
+                <label
+                  htmlFor="Image"
+                  className="text-sm block font-bold text-gray-400"
+                >
+                  Image
+                </label>
+                <input
+                  type="file"
+                  name="image"
+                  className="px-3 py-2 focus: outline-none rounded"
+                  onChange={(e) => setFieldValue("image", e.target.files?.[0])}
                 />
                 <button
                   type="submit"

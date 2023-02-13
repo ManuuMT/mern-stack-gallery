@@ -45,7 +45,6 @@ export const PostProvider = ({ children }: Props) => {
 
   const updatePost = async (id: string, values: Partial<Post>) => {
     const res = await updatePostRequest(id, values);
-    console.log(res);
     if (res.data) {
       setPosts(posts.map((post) => (post._id === id ? res.data : post)));
     }

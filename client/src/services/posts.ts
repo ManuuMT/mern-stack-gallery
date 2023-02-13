@@ -7,8 +7,19 @@ export const getPostsRequest = async () =>
 export const deletePostRequest = async (id: string) =>
   await axios.delete(`http://localhost:4000/posts/${id}`);
 
-export const createPostRequest = async (post: Post) =>
-  await axios.post("http://localhost:4000/posts", post);
+export const createPostRequest = async (post: any) => {
+  const form = new FormData();
+
+  for (let key in post) {
+    form.append(key, post[key]);
+  }
+
+  return await axios.post("http://localhost:4000/posts", form, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
+};
 
 export const getSinglePostsRequest = async (id: string) =>
   await axios.get(`http://localhost:4000/posts/${id}`);
