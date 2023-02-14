@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "node": "nodemon server --ignore client",
-    "start": "node server/index.js"
+    "start": "node server/index.js",
+    "build": "pnpm run build --prefix client"
   },
   "keywords": [],
   "author": "",
