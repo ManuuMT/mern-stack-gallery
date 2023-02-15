@@ -7,7 +7,7 @@
   "scripts": {
     "node": "nodemon server --ignore client",
     "start": "node server/index.js",
-    "build": "pnpm run build --prefix client"
+    "build": "pnpm --prefix ./client/ run build"
   },
   "keywords": [],
   "author": "",
